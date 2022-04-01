@@ -1,18 +1,19 @@
 <template>
-  <DogList/>
+  <nav class="navbar navbar-expand-sm navC">
+    <a class="navbar-brand" href="#">Dog Breed API</a>
+  </nav>
+  <router-view/>
 </template>
 
 <script>
-import DogList from './components/DogList.vue';
 
 export default {
   name: 'App',
-  components: {
-    DogList,
-  },
+
 };
 </script>
 
 <style lang="sass">
-  @import './app.scss'
-</style>>
+@import './app.scss'
+</style>
+>

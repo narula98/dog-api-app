@@ -1,1 +1,14 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+/*navbar styles */
+
+.navC{
+    background-color: blueviolet; 
+    font-weight: bold;
+    padding: 25px !important;
+    
+  }
+  .navC a{
+    color: bisque;
+    float: right;
+  }

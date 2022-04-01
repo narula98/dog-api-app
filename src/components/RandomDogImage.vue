@@ -1,6 +1,8 @@
 <template>
   <div class="d-flex justify-content-center">
+    <n-spin v-if="!imgUrl" :show="true"/>
     <img
+      v-else
       :src="imgUrl"
       :alt="DogName"
       width="200"

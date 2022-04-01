@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-sm navC">
-    <a class="navbar-brand" href="#">Dog Breed API</a>
+    <router-link to="/" class="navbar-brand" href="#">Dog Breed API</router-link>
   </nav>
   <router-view/>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <n-spin v-if="showSpinner" />
-    <div v-else class="row py-4">
+    <div v-else-if="pageOfItems.length > 0" class="row py-4">
       <div
         v-for="(dog, index) in pageOfItems"
         :key="index"
@@ -67,7 +67,10 @@ export default {
       // update page of items
       console.log(myCallback);
       const localDogArr = this.dogBreeds;
-      this.pageOfItems = localDogArr.slice(16 * (myCallback - 1), (16 * (myCallback - 1)) + 16);
+      this.pageOfItems = [];
+      setTimeout(() => {
+        this.pageOfItems = localDogArr.slice(16 * (myCallback - 1), (16 * (myCallback - 1)) + 16);
+      }, 100);
     },
   },
 };

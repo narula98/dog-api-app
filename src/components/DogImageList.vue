@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+      <h2 class="text-center px-3">Showing Images For Breed {{dogName}}</h2>
     <n-spin v-if="showSpinner" />
     <div v-else class="row ">
       <div

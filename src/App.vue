@@ -9,8 +9,8 @@ export default {
   name: 'App',
   components: {
     DogList,
-  }
-}
+  },
+};
 </script>
 
 <style lang="sass">

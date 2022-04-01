@@ -1,21 +1,21 @@
 <template>
   <div class="container">
     <n-spin v-if="showSpinner" />
-    <div v-else class="row">
+    <div v-else class="row py-4">
       <div
-        v-for="(dog, index) in dogBreeds"
+        v-for="(dog, index) in pageOfItems"
         :key="index"
         class="col-md-3 col-lg-3 col-sm-3 col-xl-3 dogList"
       >
-        <random-dog-image :DogName="dog" />
-        <p>{{ dog }}</p>
+        <random-dog-image :DogName="dog" class="button-pointer" />
+        <p class="text-center">{{ dog }}</p>
       </div>
-      <div class="card text-center m-3">
+      <div class="card text-center m-3 align-items-center">
         <div class="card-footer pb-0 pt-3">
           <v-pagination
             v-model="page"
-            :records="500"
-            :per-page="25"
+            :records="totalItems"
+            :per-page="16"
             @paginate="onChangePage"
           />
         </div>
@@ -46,6 +46,7 @@ export default {
       showSpinner: false,
       pageOfItems: [],
       page: 1,
+      totalItems: 0,
     };
   },
   methods: {
@@ -54,6 +55,8 @@ export default {
         this.showSpinner = true;
         const resp = await DogApi.getAllDogsList();
         this.dogBreeds = Object.keys(resp.message);
+        this.totalItems = this.dogBreeds.length;
+        this.onChangePage(1);
       } catch {
         this.dogServiceError = true;
       } finally {
@@ -63,6 +66,8 @@ export default {
     onChangePage(myCallback) {
       // update page of items
       console.log(myCallback);
+      const localDogArr = this.dogBreeds;
+      this.pageOfItems = localDogArr.slice(16 * (myCallback - 1), (16 * (myCallback - 1)) + 16);
     },
   },
 };

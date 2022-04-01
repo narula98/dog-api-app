@@ -17,6 +17,6 @@ export default class DogApi {
     const options = {
       method: 'GET', // or 'PUT'
     };
-    return fetch(`'https://dog.ceo/api/breed/'+${name}+'/images'`, options).then((resp) => resp.json());
+    return fetch(`https://dog.ceo/api/breed/${name}/images`, options).then((resp) => resp.json());
   }
 }

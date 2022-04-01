@@ -1,10 +1,11 @@
 <template>
-  <div >
+  <div class="d-flex justify-content-center">
     <img
       :src="imgUrl"
       :alt="DogName"
       width="200"
       height="200"
+      @click="navigateToDogImage"
     />
   </div>
 </template>
@@ -29,9 +30,19 @@ export default {
     };
   },
   methods: {
+
     async getRandomImage() {
       const resp = await DogApi.getAllDogRandomImage(this.DogName);
       this.imgUrl = resp.message;
+    },
+
+    navigateToDogImage() {
+      this.$router.push({
+        name: 'DogImageList',
+        params: {
+          dogName: this.DogName,
+        },
+      });
     },
   },
 };
